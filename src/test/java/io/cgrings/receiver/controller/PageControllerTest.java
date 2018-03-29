@@ -25,14 +25,6 @@ public class PageControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void dataTest() throws Exception {
-        final String expected = "World";
-        final ResponseEntity<PageViewInput> entity = this.restTemplate.getForEntity("/greeting", PageViewInput.class);
-        final String actual = entity.getBody().getId();
-        Assert.assertEquals(expected, actual);
-    }
-
-    @Test
     public void receiverTest() throws Exception {
         final PageViewInput request = new PageViewInput("foo", "bar.html", ZonedDateTime.now());
         final ResponseEntity<Void> response = this.restTemplate.postForEntity("/api/page/hit", request, Void.class);
